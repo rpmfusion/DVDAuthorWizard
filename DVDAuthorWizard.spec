@@ -1,24 +1,21 @@
 Name:           DVDAuthorWizard
 Version:        1.4.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Create a video DVD from MPEG-2 files
 Group:          Applications/Multimedia
 License:        GPL
 URL:            http://dvdauthorwizard.sourceforge.net
 Source0:        http://dl.sf.net/dvdauthorwizard/%{name}-%{version}.tar.bz2
+Source1:        %{name}.desktop
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
 BuildArch:      noarch
+
 BuildRequires:  desktop-file-utils
-Requires:       bc
+Requires:       kdebase3, bc, k3b, soc, mjpegtools, transcode, xine
 Requires:       dvdauthor >= 0.6.11
 Requires:       ImageMagick >= 6.2.0
-Requires:       k3b
-Requires:       kdebase
 Requires:       kdewebdev >= 3.3.0
-Requires:       mjpegtools
-Requires:       sox
-Requires:       transcode
-Requires:       xine
 
 
 %description
@@ -38,19 +35,7 @@ iconv -f iso8859-1 Changelog -t utf8 > Changelog.conv && /bin/mv -f Changelog.co
 
 
 %build
-# Build desktop icon
-cat >%{name}.desktop <<EOF
-[Desktop Entry]
-Encoding=UTF-8
-Name=DVD Author Wizard
-GenericName=: Create Video DVDs
-Comment=%{summary}
-Exec=dvdauthorwizard
-Icon=dvd_unmount
-Terminal=false
-Type=Application
-Categories=Qt;KDE;AudioVideo;
-EOF
+#nothing to build
 
 cat << EOF > dvdauthorwizard
 #!/bin/sh
@@ -63,14 +48,15 @@ EOF
 rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_datadir}/apps/%{name}
 mkdir -p %{buildroot}%{_bindir}
+
 install -pm0644 bin/%{name}.kmdr %{buildroot}%{_datadir}/apps/%{name}
 install -pm0755 bin/%{name}-Builder.sh %{buildroot}%{_datadir}/apps/%{name}
 install -pm0755 dvdauthorwizard %{buildroot}%{_bindir}
 cp -a share/apps/dvdauthorwizard/Pictures %{buildroot}%{_datadir}/apps/%{name}
 
-desktop-file-install --vendor dribble \
+desktop-file-install --vendor "" \
                      --dir %{buildroot}%{_datadir}/applications \
-                     %{name}.desktop
+                     %{SOURCE1}
 
 
 %clean
@@ -79,13 +65,16 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%doc Changelog Creating\ Chapters.txt
 %{_bindir}/dvdauthorwizard
 %{_datadir}/apps/%{name}
-%{_datadir}/applications/dribble-%{name}.desktop
-%doc Changelog Creating\ Chapters.txt
+%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Tue Sep 09 2008 Xavier Lamien <lxtnow@gmail.com> - 1.4.6-2
+- Update files and rebuild for rpmfusion inclusion.
+
 * Sun Jun 03 2007 Ian Chapman <packages@amiga-hardware.com> 1.4.6-1%{?dist}
 - Upgrade to 1.4.6
 
