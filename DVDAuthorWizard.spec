@@ -12,7 +12,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
 BuildRequires:  desktop-file-utils
-Requires:       kdebase3, bc, k3b, soc, mjpegtools, transcode, xine
+Requires:       kdebase3, bc, k3b, sox, mjpegtools, transcode, xine
 Requires:       dvdauthor >= 0.6.11
 Requires:       ImageMagick >= 6.2.0
 Requires:       kdewebdev >= 3.3.0
