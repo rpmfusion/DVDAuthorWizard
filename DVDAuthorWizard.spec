@@ -1,6 +1,6 @@
 Name:           DVDAuthorWizard
 Version:        1.4.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Create a video DVD from MPEG-2 files
 Group:          Applications/Multimedia
 License:        GPL
@@ -72,6 +72,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Feb 08 2012 Nicolas Chauvet <kwizart@gmail.com> - 1.4.6-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 1.4.6-3
 - rebuild for new F11 features
 
