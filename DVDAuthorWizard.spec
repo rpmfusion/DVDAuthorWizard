@@ -1,6 +1,6 @@
 Name:           DVDAuthorWizard
 Version:        1.4.6
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Create a video DVD from MPEG-2 files
 Group:          Applications/Multimedia
 License:        GPL
@@ -65,13 +65,16 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc Changelog Creating\ Chapters.txt
+%doc Changelog Creating?Chapters.txt
 %{_bindir}/dvdauthorwizard
 %{_datadir}/apps/%{name}
 %{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Wed Apr 24 2013 Nicolas Chauvet <kwizart@gmail.com> - 1.4.6-6
+- Fix space in %%doc
+
 * Sun Mar 03 2013 Nicolas Chauvet <kwizart@gmail.com> - 1.4.6-5
 - Mass rebuilt for Fedora 19 Features
 
