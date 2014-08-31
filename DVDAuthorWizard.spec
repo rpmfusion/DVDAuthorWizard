@@ -1,6 +1,6 @@
 Name:           DVDAuthorWizard
 Version:        1.4.6
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Create a video DVD from MPEG-2 files
 Group:          Applications/Multimedia
 License:        GPL
@@ -72,6 +72,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 1.4.6-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Wed Apr 24 2013 Nicolas Chauvet <kwizart@gmail.com> - 1.4.6-6
 - Fix space in %%doc
 
