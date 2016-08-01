@@ -1,6 +1,6 @@
 Name:           DVDAuthorWizard
 Version:        1.4.6
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Create a video DVD from MPEG-2 files
 Group:          Applications/Multimedia
 License:        GPL
@@ -49,7 +49,7 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_datadir}/apps/%{name}
 mkdir -p %{buildroot}%{_bindir}
 
-install -pm0644 bin/%{name}.kmdr %{buildroot}%{_datadir}/apps/%{name}
+install -pm0755 bin/%{name}.kmdr %{buildroot}%{_datadir}/apps/%{name}
 install -pm0755 bin/%{name}-Builder.sh %{buildroot}%{_datadir}/apps/%{name}
 install -pm0755 dvdauthorwizard %{buildroot}%{_bindir}
 cp -a share/apps/dvdauthorwizard/Pictures %{buildroot}%{_datadir}/apps/%{name}
@@ -72,6 +72,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Aug 01 2016 Sérgio Basto <sergio@serjux.com> - 1.4.6-8
+- Fix permissions of DVDAuthorWizard.kmdr
+
 * Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 1.4.6-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
