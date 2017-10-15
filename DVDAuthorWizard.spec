@@ -1,21 +1,22 @@
 Name:           DVDAuthorWizard
 Version:        1.4.6
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Create a video DVD from MPEG-2 files
 Group:          Applications/Multimedia
-License:        GPL
-URL:            http://dvdauthorwizard.sourceforge.net
-Source0:        http://dl.sf.net/dvdauthorwizard/%{name}-%{version}.tar.bz2
+License:        GPLv2
+URL:            https://sourceforge.net/projects/dvdauthorwizard/
+Source0:        http://download.sf.net/dvdauthorwizard/%{name}-%{version}.tar.bz2
 Source1:        %{name}.desktop
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch0:         DVDAuthorWizard-Builder.sh.patch
 
 BuildArch:      noarch
 
 BuildRequires:  desktop-file-utils
-Requires:       kdebase3, bc, k3b, sox, mjpegtools, transcode, xine
+Requires:       kdebase3 bc sox mjpegtools transcode
 Requires:       dvdauthor >= 0.6.11
 Requires:       ImageMagick >= 6.2.0
 Requires:       kdewebdev >= 3.3.0
+Recommends:     k3b xine-ui
 
 
 %description
@@ -27,6 +28,7 @@ follow.
 
 %prep
 %setup -q
+%patch0 -p1 -b .options
 sed -i 's/\/\.\.\/share\/apps\/dvdauthorwizard//g' bin/DVDAuthorWizard.kmdr
 sed -i 's/..\/share\/apps\/dvdauthorwizard/\/usr\/share\/apps\/DVDAuthorWizard/g' \
        bin/DVDAuthorWizard-Builder.sh
@@ -45,7 +47,6 @@ EOF
 
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_datadir}/apps/%{name}
 mkdir -p %{buildroot}%{_bindir}
 
@@ -59,10 +60,6 @@ desktop-file-install --vendor "" \
                      %{SOURCE1}
 
 
-%clean
-rm -rf %{buildroot}
-
-
 %files
 %defattr(-,root,root,-)
 %doc Changelog Creating?Chapters.txt
@@ -72,6 +69,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Oct 15 2017 Sérgio Basto <sergio@serjux.com> - 1.4.6-11
+- Fix calls to unsupported (EOL) options of transcode and sox (#4673)
+- spec clean up, urls and license fixes .
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.4.6-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
