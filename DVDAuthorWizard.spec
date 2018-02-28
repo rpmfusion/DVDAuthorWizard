@@ -1,6 +1,6 @@
 Name:           DVDAuthorWizard
 Version:        1.4.6
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Create a video DVD from MPEG-2 files
 Group:          Applications/Multimedia
 License:        GPLv2
@@ -69,6 +69,9 @@ desktop-file-install --vendor "" \
 
 
 %changelog
+* Wed Feb 28 2018 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.4.6-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Sun Oct 15 2017 Sérgio Basto <sergio@serjux.com> - 1.4.6-11
 - Fix calls to unsupported (EOL) options of transcode and sox (#4673)
 - spec clean up, urls and license fixes .
