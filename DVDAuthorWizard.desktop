@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=DVD Author Wizard
-GenericName=: Create Video DVDs
-Comment=Create a video DVD from MPEG-2 files
-Exec=dvdauthorwizard
-Icon=dvd_unmount
-Terminal=false
-Type=Application
-Categories=Qt;KDE;AudioVideo;
